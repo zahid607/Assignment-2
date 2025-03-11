@@ -1,0 +1,65 @@
+---
+title: "Assignment 2"
+author: "Mohammad Zahid Chowdhury"
+date: "02-08-2025"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+# Install the necessary packages & Connect to the MySQL database
+
+```{r}
+
+# Load necessary libraries
+library(DBI)
+library(RMariaDB)
+
+# Connect to the MySQL database
+con <- dbConnect(RMariaDB::MariaDB(), 
+                 dbname = "flights",  
+                 host = "localhost",             
+                 user = "root",         
+                 password = "Zahid123")    
+
+# Query to fetch data from the 'six_movies_list' table
+
+query <- "SELECT * FROM six_movies_list;"
+
+# Load the data into a dataframe
+
+
+df <- dbGetQuery(con, query)
+
+# View the first few rows of the dataframe
+head(df)
+
+# Close the connection to the database
+dbDisconnect(con)
+
+```
+
+
+
+```{r}
+
+library(ggplot2)
+library(dplyr)
+
+# Load the data from github:
+
+df <- read.pdf("https://github.com/zahid607/Assignment-2/blob/main/Assignment-2.pdf")
+
+
+
+
+```
+
+
